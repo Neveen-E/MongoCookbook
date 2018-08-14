@@ -25,8 +25,8 @@
   "provisioners": [
     {
       "type": "chef-solo",
-      "cookbook_paths": ["./recipes"],
-      "run_list":["MongoCookbook::default", "MongoCookbook::repl"]
+      "cookbook_paths": ["./cookbooks"],
+      "run_list":["mongo-server::repl"]
     }
   ],
   "post-processors": [

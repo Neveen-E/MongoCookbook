@@ -1,3 +1,2 @@
 source 'https://supermarket.chef.io'
-
-metadata
+cookbook 'mongo-server', git: 'git@github.com:Neveen-E/MongoCookbook.git'
