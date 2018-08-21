@@ -24,7 +24,7 @@ end
 
 apt_repository 'mongodb-org' do
   uri "http://repo.mongodb.org/apt/ubuntu"
-  distribution "xenial/mongodb-org/3.4"
+  distribution "xenial/mongodb-org/3.2"
   components ["multiverse"]
   keyserver "hkp://keyserver.ubuntu.com:80"
   key "EA312927"
@@ -39,7 +39,7 @@ template '/lib/systemd/system/mongod.service' do
   mode '0600'
   owner 'root'
   group 'root'
-
+  notifies :restart, 'service[mongod]'
 end
 
 template '/etc/mongod.conf' do
@@ -47,5 +47,10 @@ template '/etc/mongod.conf' do
   mode '0755'
   owner 'root'
   group 'root'
+  notifies :restart, 'service[mongod]'
+end
 
+service 'mongod' do
+  supports status: true, restart: true, reload: true
+  action [:enable, :start]
 end
