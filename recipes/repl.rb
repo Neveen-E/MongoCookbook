@@ -39,7 +39,7 @@ template '/lib/systemd/system/mongod.service' do
   mode '0600'
   owner 'root'
   group 'root'
-
+  notifies :restart, 'service[mongod]'
 end
 
 template '/etc/mongod.conf' do
@@ -47,5 +47,10 @@ template '/etc/mongod.conf' do
   mode '0755'
   owner 'root'
   group 'root'
+  notifies :restart, 'service[mongod]'
+end
 
+service 'mongod' do
+  supports status: true, restart: true, reload: true
+  action [:enable, :start]
 end
