@@ -20,7 +20,7 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "mongo-server-replica-sets"
+    "ami_name": "mongo-server-replica-sets-v3.4"
   }],
   "provisioners": [
     {

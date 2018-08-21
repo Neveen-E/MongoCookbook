@@ -16,7 +16,7 @@ verifier:
 suites:
     - name: default
       run_list:
-        - recipe[MongoCookbook::default, MongoCookbook::repl]
+        - recipe[mongo-server::repl]
       verifier:
         inspec_tests:
           - test/smoke/default
